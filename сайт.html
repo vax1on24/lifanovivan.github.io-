@@ -1,0 +1,580 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Рекомендации по работе с речевыми технологиями | Гайд для пользователей</title>
+    <!-- Современный шрифт и базовая стилизация -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #f5f7fc 0%, #eef2f8 100%);
+            color: #1a2634;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* Header */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1f3b4c, #2b5e6e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #3a5468;
+            max-width: 720px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #d9e9f0;
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #1f5e6e;
+            margin-bottom: 1rem;
+        }
+
+        /* Карточная сетка с рекомендациями */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem;
+            margin: 2.5rem 0 3rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 1.8rem;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.02);
+            transition: all 0.25s ease;
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: white;
+            box-shadow: 0 24px 40px rgba(0, 0, 0, 0.08);
+            border-color: #cbdde6;
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: #eef3f7;
+            width: 52px;
+            height: 52px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1f3e4b;
+        }
+
+        .card p, .card li {
+            color: #2c4458;
+            font-weight: 400;
+        }
+
+        .card ul {
+            padding-left: 1.2rem;
+            margin: 1rem 0;
+        }
+
+        .card li {
+            margin: 0.5rem 0;
+        }
+
+        /* Блок с интерактивным чек-листом */
+        .checklist-section {
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem;
+            margin: 2rem 0 2.5rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2edf2;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1a3b48;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-sub {
+            font-size: 1rem;
+            color: #5b7e93;
+            margin-bottom: 1.5rem;
+border-left: 3px solid #52b9cf;
+            padding-left: 1rem;
+        }
+
+        .checklist-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #fafdff;
+            padding: 0.85rem 1.2rem;
+            border-radius: 1.5rem;
+            transition: background 0.2s;
+            border: 1px solid #e9f0f4;
+            cursor: pointer;
+        }
+
+        .check-item:hover {
+            background: #f1f9fe;
+        }
+
+        .check-item input {
+            width: 1.4rem;
+            height: 1.4rem;
+            accent-color: #2b8f9b;
+            cursor: pointer;
+        }
+
+        .check-item label {
+            font-weight: 500;
+            font-size: 1rem;
+            color: #1f4456;
+            flex: 1;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .check-item .tag {
+            background: #e6f3f5;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            color: #1c6c7c;
+            letter-spacing: 0.3px;
+        }
+
+        .progress-container {
+            margin-top: 2rem;
+            background: #eaf0f5;
+            border-radius: 40px;
+            height: 10px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: #2f9eae;
+            width: 0%;
+            height: 100%;
+            transition: width 0.3s ease;
+            border-radius: 40px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+            color: #386a7a;
+            font-weight: 500;
+        }
+
+        /* НОВЫЙ БЛОК: рекомендации для пользователей умных колонок */
+        .user-tips {
+            background: linear-gradient(125deg, #ffffff 0%, #fef9ea 100%);
+            border-radius: 2rem;
+            padding: 2rem;
+            margin: 2rem 0 2rem;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+            border: 1px solid #ffe2b5;
+        }
+
+        .user-tips h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #bc6f2c;
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-tips-sub {
+            font-size: 1rem;
+            color: #a5713a;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid #f3b33d;
+            padding-left: 1rem;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tip-card {
+            background: #fffcf5;
+            border-radius: 1.5rem;
+            padding: 1.3rem 1.5rem;
+            transition: all 0.2s ease;
+            border: 1px solid #ffe1b3;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.05);
+            background: white;
+        }
+
+        .tip-card .tip-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.6rem;
+            display: inline-block;
+        }
+
+        .tip-card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #a45d2a;
+            margin-bottom: 0.8rem;
+        }
+
+        .tip-card p {
+            color: #4a3b2a;
+            font-size: 0.95rem;
+            line-height: 1.45;
+        }
+
+        .example-voice {
+            background: #f0ede5;
+            border-radius: 1rem;
+            padding: 0.5rem 1rem;
+            margin-top: 0.8rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #bb6b2a;
+            display: inline-block;
+        }
+
+        .footnote {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: #6f92a3;
+border-top: 1px solid #d4e2ea;
+            padding-top: 2rem;
+        }
+
+        @media (max-width: 680px) {
+            .container {
+                padding: 1.2rem;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .card h3 {
+                font-size: 1.3rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <div class="badge">⭐ Рекомендации 2026</div>
+        <h1>🎤 Речевые технологии<br>Практическое руководство</h1>
+        <p>ASR, TTS, voice UX — от базовых принципов до внедрения в продакшн. Лучшие практики для разработчиков и полезные советы для владельцев умных колонок.</p>
+    </div>
+
+    <!-- Основные блоки-рекомендации (оставлены без изменений) -->
+    <div class="grid">
+        <div class="card">
+            <div class="card-icon">🎙️</div>
+            <h3>Распознавание речи (ASR)</h3>
+            <ul>
+                <li><strong>Акустическая среда:</strong> учитывайте шумы, эхо, используйте <em>VAD</em> (voice activity detection).</li>
+                <li><strong>Языковая модель:</strong> настраивайте доменные словари, имена, термины для повышения точности.</li>
+                <li><strong>Формат вывода:</strong> возвращайте N-best гипотез и confidence score для последующей обработки.</li>
+                <li><strong>Интернационализация:</strong> проверяйте диалекты и акценты для целевых регионов.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <div class="card-icon">🗣️</div>
+            <h3>Синтез речи (TTS)</h3>
+            <ul>
+                <li><strong>Естественность:</strong> используйте нейросетевые модели (VITS, Tacotron2 + WaveGlow/HiFi-GAN).</li>
+                <li><strong>Эмоциональный окрас:</strong> внедряйте prosody control, регулируйте темп и интонацию.</li>
+                <li><strong>Гибкость:</strong> предоставляйте выбор голосов (пол, возраст) и SSML-разметку.</li>
+                <li><strong>Качество аудио:</strong> избегайте артефактов, выбирайте частоту 24кГц+ для телефонии — 8кГц с оптимизацией.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <div class="card-icon">🧠</div>
+            <h3>Voice UX & Диалоговые системы</h3>
+            <ul>
+                <li><strong>Подтверждения:</strong> используйте явное и неявное подтверждение ключевых действий.</li>
+                <li><strong>Грейсфейл (graceful fallback):</strong> при ошибке ASR — переспрашивайте с контекстом.</li>
+                <li><strong>Обработка пауз:</strong> устанавливайте тайм-ауты с учётом когнитивной нагрузки.</li>
+                <li><strong>Адаптивность:</strong> дайте пользователю возможность переключиться на текст/gui, когда это удобно.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Чек-лист интерактивный: подготовка проектов к работе с речью (без изменений) -->
+    <div class="checklist-section">
+        <div class="section-title">
+               <!-- НОВЫЙ БЛОК: рекомендации для обычного пользователя (умные колонки, Алиса, и т.д.) -->
+    <div class="user-tips">
+<h3>🏠 Владельцам умных колонок и голосовых помощников</h2>
+        <div class="user-tips-sub">Как сделать общение с Алисой, Марусей или Салютом максимально удобным и эффективным — простые советы для каждого дня</div>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-icon">🗣️</div>
+                <h4>Говорите чётко, но естественно</h4>
+                <p>Не нужно кричать или замедлять речь — помощники отлично понимают обычный разговорный темп. Старайтесь избегать фонового шума (телевизор, музыка), когда даёте команду.</p>
+                <div class="example-voice">❌ "Алиса... включи... пожалуйста... музыку..." → ✅ "Алиса, включи джаз"</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">📍</div>
+                <h4>Используйте точные названия и контекст</h4>
+                <p>Если хотите поставить трек — называйте исполнителя и трек. Для будильника или таймера уточняйте время и что именно нужно сделать. Помощники лучше понимают короткие смысловые фразы.</p>
+                <div class="example-voice">★ "Алиса, поставь будильник на 7:20"<br>★ "Алиса, напомни купить хлеб в 18:00"</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🔇</div>
+                <h4>Учитывайте акустику помещения</h4>
+                <p>Ставьте колонку в центре комнаты, подальше от стен и углов. Не закрывайте микрофоны. Если в комнате работает вытяжка или кондиционер — подойдите ближе к устройству.</p>
+                <div class="example-voice">💡 В шумной обстановке активируйте помощника кнопкой на колонке или используйте приложение-пульт.</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🧩</div>
+                <h4>Изучите навыки и команды</h4>
+                <p>Умные колонки умеют гораздо больше, чем кажется: управление умным домом, заказ еды, решение примеров, игры, сказки для детей. Спросите: "Какие у тебя есть навыки?" или посмотрите каталог в приложении.</p>
+                <div class="example-voice">🎲 "Алиса, запусти игру в города"<br>🌦️ "Какая погода будет завтра утром?"</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">👥</div>
+                <h4>Настройте голосовой профиль (если доступно)</h4>
+                <p>Некоторые ассистенты запоминают ваш голос, чтобы узнавать членов семьи и персонализировать ответы (календарь, рекомендации). Это повышает точность и удобство.</p>
+                <div class="example-voice">⚙️ Зайдите в настройки приложения → «Узнавание голоса» или «Голосовой ID».</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">⚠️</div>
+                <h4>Правильно прерывайте и уточняйте</h4>
+                <p>Если помощник отвечает не то, что вы хотели — скажите «Стоп», «Отмена» или «Повтори» после паузы. Не стесняйтесь переформулировать запрос: иногда достаточно сменить порядок слов.</p>
+                <div class="example-voice">🔁 Вместо: "Алиса, включи радио Энерджи" → "Алиса, включи радио Energy 104.2 FM"</div>
+            </div>
+        </div>
+        <div style="margin-top: 1.8rem; background: #fff1e0; border-radius: 1.2rem; padding: 1rem 1.3rem;">
+            <span style="font-weight: 700;">✨ Быстрый лайфхак:</span> Если колонка вас не слышит или ошибается, попробуйте проверить уровень громкости её ответов и перезагрузить устройство раз в 2–3 недели — это очищает временный кэш и помогает микрофонам работать стабильнее.
+        </div>
+    </div>
+
+    <!-- Дополнительные лучшие практики: производительность, приватность (оставлены без изменений) -->
+    <div class="grid" style="margin-top: 0;">
+        <div class="card">
+            <div class="card-icon">🔒</div>
+            <h3>Приватность и этика</h3>
+            <ul>
+                <li>Обеспечьте информированное согласие на запись голоса и хранение данных.</li>
+                <li>Используйте анонимизацию: удаляйте биометрические векторы после обработки.</li>
+<li>Предоставляйте возможность удаления голосовых записей по запросу.</li>
+                <li>Избегайте гендерных стереотипов при выборе голосовых ассистентов.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3>Производительность & реальное время</h3>
+            <ul>
+                <li>Для edge-устройств используйте lightweight модели (ONNX/Runtime).</li>
+                <li>Внедряйте стриминг ASR (WebSocket) для интерактивных диалогов.</li>
+                <li>Оптимизация TTS: синтез фрагментов по требованию и параллельная генерация.</li>
+                <li>Баланс между latency и точностью: примите динамический порог дообучения.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footnote">
+        🌟 Рекомендации составлены на основе анализа open-source решений (Vosk, Whisper, Coqui TTS) и коммерческого опыта внедрения голосовых роботов.<br>
+        Актуально для web, mobile, IVR, а также для владельцев умных колонок (Алиса, Маруся, Салют, Google Assistant).
+    </div>
+</div>
+
+<script>
+    // Данные для чек-листа: список рекомендаций с тегами (без изменений)
+    const checklistData = [
+        { id: "check_1", text: "Проведён аудит качества ASR на целевых акцентах/шумах", tag: "ASR" },
+        { id: "check_2", text: "Реализован gracefull fallback при ошибках распознавания (переспрос, уточнение)", tag: "Voice UX" },
+        { id: "check_3", text: "Синтез речи поддерживает SSML и регулировку скорости/громкости", tag: "TTS" },
+        { id: "check_4", text: "Настроено логирование метрик точности и user satisfaction для voice-команд", tag: "Аналитика" },
+        { id: "check_5", text: "Обеспечена поддержка долгих пауз и barge-in (прерывание речи)", tag: "Интерактив" },
+        { id: "check_6", text: "Используется VAD для снижения нагрузки и отсечения тишины", tag: "Производительность" },
+        { id: "check_7", text: "Голосовые данные пользователей шифруются и хранятся ограниченное время", tag: "Безопасность" },
+        { id: "check_8", text: "Интерфейс предоставляет понятные подсказки (что можно сказать)", tag: "UX" },
+        { id: "check_9", text: "Проведено A/B тестирование разных голосов и формулировок", tag: "Оптимизация" },
+        { id: "check_10", text: "Интегрировано распознавание намерений (NLU) с доменными слотами", tag: "NLU" }
+    ];
+
+    let checklistState = {};
+
+    // Загружаем сохранённые состояния из localStorage
+    function loadState() {
+        const stored = localStorage.getItem("speechTechChecklist");
+        if (stored) {
+            try {
+                const parsed = JSON.parse(stored);
+                checklistState = parsed;
+            } catch(e) { console.warn(e); }
+        }
+        checklistData.forEach(item => {
+            if (checklistState[item.id] === undefined) {
+                checklistState[item.id] = false;
+            }
+        });
+    }
+
+    function saveState() {
+        localStorage.setItem("speechTechChecklist", JSON.stringify(checklistState));
+    }
+
+    function renderChecklist() {
+        const container = document.getElementById("checklistContainer");
+        if (!container) return;
+
+        let html = '';
+        checklistData.forEach(item => {
+            const isChecked = checklistState[item.id] === true;
+            html += `
+                <div class="check-item" data-id="${item.id}">
+                    <input type="checkbox" id="${item.id}" ${isChecked ? 'checked' : ''}>
+                    <label for="${item.id}">${escapeHtml(item.text)}</label>
+                    <span class="tag">${escapeHtml(item.tag)}</span>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+
+        document.querySelectorAll('.check-item input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', (e) => {
+                e.stopPropagation();
+                const id = checkbox.id;
+                checklistState[id] = checkbox.checked;
+                saveState();
+                updateProgress();
+            });
+});
+        document.querySelectorAll('.check-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (e.target.tagName !== 'INPUT' && e.target !== item.querySelector('input')) {
+                    const inp = item.querySelector('input');
+                    if (inp) {
+                        inp.checked = !inp.checked;
+                        const changeEvent = new Event('change', { bubbles: true });
+                        inp.dispatchEvent(changeEvent);
+                    }
+                }
+            });
+        });
+        updateProgress();
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    function updateProgress() {
+        const total = checklistData.length;
+        let completed = 0;
+        for (let item of checklistData) {
+            if (checklistState[item.id] === true) completed++;
+        }
+        const percent = total === 0 ? 0 : Math.round((completed / total) * 100);
+        const fillEl = document.getElementById("progressFill");
+        const completedSpan = document.getElementById("completedCount");
+        const totalSpan = document.getElementById("totalCount");
+        const percentSpan = document.getElementById("progressPercent");
+        if (fillEl) fillEl.style.width = ${percent}%;
+        if (completedSpan) completedSpan.innerText = completed;
+        if (totalSpan) totalSpan.innerText = total;
+        if (percentSpan) percentSpan.innerText = ${percent}%;
+    }
+
+    function showBrowserSpeechInfo() {
+        const hasSpeechRecog = 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window;
+        if (!hasSpeechRecog && document.querySelector('.hero .badge')) {
+            const note = document.createElement('div');
+            note.style.background = '#fce8cf';
+            note.style.borderRadius = '1.5rem';
+            note.style.padding = '0.6rem 1rem';
+            note.style.marginTop = '0.8rem';
+            note.style.fontSize = '0.85rem';
+            note.style.color = '#ad6b35';
+            note.innerText = 'ℹ️ Ваш браузер не поддерживает Web Speech API, но рекомендации остаются актуальны для серверных решений и умных колонок.';
+            document.querySelector('.hero').appendChild(note);
+        }
+    }
+
+    function init() {
+        loadState();
+        renderChecklist();
+        showBrowserSpeechInfo();
+    }
+
+    init();
+</script>
+</body>
+</html>
